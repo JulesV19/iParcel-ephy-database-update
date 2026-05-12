@@ -1,0 +1,13 @@
+{
+  "name": "update-ephy",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs",
+    "update": "node update.mjs",
+    "rebuild": "node update.mjs --rebuild"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.0"
+  }
+}
