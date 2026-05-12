@@ -1,0 +1,25 @@
+name: Update e-phy
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'  # 6h et 18h UTC tous les jours
+  workflow_dispatch:          # déclenchement manuel depuis l'onglet Actions
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run update
+        run: node update.mjs
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
